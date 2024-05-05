@@ -1,0 +1,14 @@
+.card:hover .card_name {
+    visibility: visible;
+}
+
+.card_name, .card_color {
+    visibility: hidden;
+}
+
+.card:hover .card_img {
+    transform: translateY(-50px) rotate(-20deg);
+}
+.card:hover .card_color {
+    visibility: visible;
+}

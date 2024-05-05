@@ -5,6 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+   
     extend: {
       textColor: {
         "orange": "#FFB86C",
@@ -19,8 +20,13 @@ export default {
       ,
       backgroundImage: {
         "home": "url()"
+      },
+      spacing: {
+        "480px": "480px",
+        "640px": "640px"
       }
     },
+    
   },
   plugins: [],
 }
