@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 
 function Home() {
  
-
+//Updated
   return (
     <>
       <div className="bg-gradient-to-r  from-pink-300 h-screen">
