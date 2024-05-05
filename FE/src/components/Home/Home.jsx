@@ -16,13 +16,18 @@ function Home() {
             />
             <h1 className="text-slate-950 p-3 text-xl">Snooker</h1>
           </span>
+          <div className="search_bar p-3">
+          <input type="text" placeholder=" Search.." className="border-2 border-gray-600 bg-dracula-yellow rounded"  />
+              <button className="border-gray-600 rounded-3xl px-1"><i class="fa-solid fa-magnifying-glass text-xl"></i></button>
+          </div>
           <ul class="flex space-x-4">
             <li class="inline-block text-slate-950 p-3">
               <a href="">Shop</a>
             </li>
-            <li class="inline-block text-slate-950 p-3">
-              <input type="text" placeholder="Search.." className="bord" />
-            </li>
+            {/* <li class="inline-block text-slate-950 p-2">
+              <input type="text" placeholder=" Search.." className="border-2 border-gray-600 rounded"  />
+              <button className="border-gray-600 rounded-3xl px-1"><i class="fa-solid fa-magnifying-glass text-xl"></i></button>
+            </li> */}
             <li class="inline-block text-slate-950 p-3">Login</li>
             <li class="inline-block text-slate-950 p-3">
               <a href="">Register</a>
