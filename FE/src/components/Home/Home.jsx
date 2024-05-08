@@ -1,21 +1,24 @@
 import React from "react";
 import "./home.css";
 import { useState, useEffect, useRef } from "react";
+import { Link, Routes, Route, Outlet } from "react-router-dom";
 import featureImg1 from "../../assets/imgs/pngegg.png";
+import Login from "../Login/Login";
 
 function Home() {
   //Updated
+
   return (
     <>
       <div className="bg-gradient-to-r  from-pink-300 h-full">
         <div className="header container-xl bg-dracula-yellow flex justify-around p-4">
           <span className="flex space-x-1">
-            <img
-              src="https://play-lh.googleusercontent.com/Fro4e_osoDhhrjgiZ_Y2C5FNXBMWvrb4rGpmkM1PDAcUPXeiAlPCq7NeaT4Q6NRUxRqo"
-              className="w-12"
-              alt=""
-            />
-            <h1 className="text-slate-950 p-3 text-xl">Snooker</h1>
+              <img
+                src="https://play-lh.googleusercontent.com/Fro4e_osoDhhrjgiZ_Y2C5FNXBMWvrb4rGpmkM1PDAcUPXeiAlPCq7NeaT4Q6NRUxRqo"
+                className="w-12"
+                alt=""
+              />
+              <h1 className="text-slate-950 p-3 text-xl">Snooker</h1>
           </span>
           <div className="search_bar p-3">
             <input
@@ -28,14 +31,21 @@ function Home() {
             </button>
           </div>
           <ul class="flex space-x-4">
+          <li class="inline-block text-slate-950 p-3">
+              <Link to="/">Home</Link>
+            </li>
             <li class="inline-block text-slate-950 p-3">
               <a href="">Shop</a>
             </li>
 
-            <li class="inline-block text-slate-950 p-3">Login</li>
+            <li class="inline-block text-slate-950 p-3">
+              <Link to="/login">Login</Link>
+              {/* <a href="">Login</a> */}
+            </li>
             <li class="inline-block text-slate-950 p-3">
               <a href="">Register</a>
             </li>
+
           </ul>
         </div>
         <div className="flex justify-around space-x-40 mt-20 ml-20 text-center">
@@ -128,6 +138,12 @@ function Home() {
           </div>
         </div>
       </div>
+    O
+      {/* <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes> */}
+    
     </>
   );
 }

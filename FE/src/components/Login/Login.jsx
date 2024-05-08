@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Login() {
   return (
     <>
@@ -9,16 +9,17 @@ function Login() {
             <div className="w-full max-w-sm py-2" id="email">
                 <label htmlFor="email" className="text-xl">Email</label>
                 <br />
-                <input type="text" id="email" className="w-full max-w-sm border-2 rounded-lg"/>
+                <input type="text" id="email" placeholder="Enter Email" className="w-full max-w-sm border-2 rounded-lg"/>
             </div>
             <div className="w-full max-w-sm py-2" id="password">
-                <label htmlFor="email" className="text-xl">Password</label>
+                <label htmlFor="password" className="text-xl">Password</label>
                 <br />
-                <input type="password" id="password" className="w-full max-w-sm border-2 rounded-lg"/>
+                <input type="password" name="password" id="password" placeholder="Enter Pasword" className="w-full max-w-sm border-2 rounded-lg"/>
             </div>
             <a href="" className="pl-64 text-gray-600 text-sm">Forget Password?</a>
             <button className="border-2 bg-blue-600 border-blue-600 px-7 py-2 rounded-xl">Submit</button>
-            <a href="" className="pt-20 hover:text-blue-700 text-lg clas">---------- Sign Up ----------</a>
+            <a href="" className="pt-16 hover:text-blue-700 text-lg clas">---------- Sign Up ----------</a>
+            <Link to="/" className="pr-96 hover:text-blue-700">Back</Link>
             
         </div>
       </div>
