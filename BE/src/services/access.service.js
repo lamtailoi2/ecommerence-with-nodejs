@@ -1,5 +1,7 @@
 import userModel from "../models/userModel.js";
+import JwtService from "./jwt.service.js";
 import AppError from "./errorService.js";
+import refreshTokenModel from "../models/refreshToken.js";
 
 class AccessService {
   static signUp = async (email, username, password, confirmPassword) => {
@@ -18,25 +20,61 @@ class AccessService {
       password,
       confirmPassword,
     });
-    console.log(user);
+    const { accessToken, refreshToken } = await JwtService.createToken(
+      user._id,
+      user.email,
+      user.role
+    );
+    await refreshTokenModel.create({
+      userId: user._id,
+      refreshToken,
+    });
     // if (!user)
     //     throw new AppError("User is existed", 401);
-    return user;
+    return {
+      user,
+      accessToken,
+    };
   };
   static signIn = async (email, password) => {
     const user = await userModel
       .findOne({
         email,
       })
-      .select("+password")
-    console.log(user.password); 
-    console.log(await user.comparePassword(password, user.password));
-    if (!user) 
-        throw new AppError("User not found!!!", 401);
-    if ( !(await user.comparePassword(password, user.password)))
+      .select("+password");
+    if (!user) throw new AppError("User not found!!!", 401);
+    if (!(await user.comparePassword(password, user.password)))
       throw new AppError("Password is not correct!!!", 401);
-    
-    return user;
+    const { accessToken, refreshToken } = await JwtService.createToken( //generate token
+        user._id,
+        user.email,
+        user.role
+      );
+    const found = await refreshTokenModel.findOne({
+      userId: user._id,
+    });
+    // console.log(user._id);
+    // console.log(
+    //   await refreshTokenModel.findOne({
+    //     userId: user._id,
+    //   })
+    // );
+    if (!found) {
+        await refreshTokenModel.create({
+            userId: user_id,
+            refreshToken
+        })
+    } else {
+        await refreshTokenModel.findOneAndUpdate({
+            userId: user._id
+        }, {
+            refreshToken
+        })
+    }
+    return {
+      user,
+      accessToken,
+    };
   };
 }
 

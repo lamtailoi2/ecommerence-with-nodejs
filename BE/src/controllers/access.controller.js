@@ -9,7 +9,7 @@ class AccessController {
     if (!password) next(new AppError("Password is empty", 401));
     if (!confirmPassword || confirmPassword !== password)
       next(new AppError("Confirm Password is not match", 401));
-    const user = await AccessService.signUp(
+    const { user, accessToken } = await AccessService.signUp(
       email,
       username,
       password,
@@ -18,7 +18,8 @@ class AccessController {
     if (!user) next(new AppError("User is existed"));
     res.json({
       metadata: user,
-      status: "successful",
+      token: accessToken,
+      status: "successful"
     });
   };
 
@@ -26,7 +27,7 @@ class AccessController {
     const { email, password } = req.body;
     if (!email) next(new AppError("Email is empty", 401));
     if (!password) next(new AppError("Password is empty", 401));
-    const user = await AccessService.signIn(
+    const { user, accessToken} = await AccessService.signIn(
       email,
       password
     )
@@ -34,6 +35,7 @@ class AccessController {
     if (!user) next (new AppError("User is not existed", 401))
     res.json({
       status: "successful",
+      token: accessToken,
       metadata: user,
   })
   };
