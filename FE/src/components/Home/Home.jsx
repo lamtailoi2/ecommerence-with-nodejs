@@ -138,7 +138,7 @@ function Home() {
           </div>
         </div>
       </div>
-    O
+      <Outlet />
       {/* <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
